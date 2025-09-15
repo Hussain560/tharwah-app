@@ -108,7 +108,7 @@ function App() {
 
     const { t } = useTranslation();
     return (
-      <div className="bg-slate-100 min-h-screen p-8 flex flex-col gap-8">
+      <div className="bg-slate-100 min-h-screen w-full max-w-full p-4 sm:p-8 flex flex-col gap-8 overflow-x-hidden">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-3xl font-bold text-gray-800">ثروه (Tharwah)</h1>
@@ -116,7 +116,7 @@ function App() {
         </div>
 
         {/* First-Time User Journey Box */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
+        <div className="bg-white rounded-lg shadow-xl p-4 sm:p-8 w-full max-w-full">
           <h2 className="text-xl font-semibold text-gray-700">{t('firstTimeUserJourney', 'First-Time User Journey: Onboarding & Authentication')}</h2>
           <div className="flex justify-center mt-4">
             <OnboardingPhone />
@@ -124,7 +124,7 @@ function App() {
         </div>
 
         {/* Main Application Experience Box */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
+        <div className="bg-white rounded-lg shadow-xl p-4 sm:p-8 w-full max-w-full">
           <h2 className="text-xl font-semibold text-gray-700">{t('mainAppExperience', 'Main Application Experience (Logged-In User)')}</h2>
           <div className="flex justify-center mt-4">
             <MainAppPhone />
@@ -132,7 +132,7 @@ function App() {
         </div>
 
         {/* Premium Upgrade Experience Box */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
+        <div className="bg-white rounded-lg shadow-xl p-4 sm:p-8 w-full max-w-full">
           <h2 className="text-xl font-semibold text-gray-700">{t('premiumAppExperience', 'Main Application Experience (Premium Upgrade)')}</h2>
           <div className="flex justify-center mt-4">
             <UpgradedAppPhone />
