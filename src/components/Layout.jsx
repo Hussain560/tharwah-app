@@ -5,9 +5,10 @@ import BottomNav from './BottomNav';
 function Layout({ children, activeTab, setActiveTab }) {
   return (
     <div
-      className="bg-neutral-800 rounded-[40px] shadow-2xl flex flex-col p-2.5 w-full md:w-[430px] max-w-sm h-[calc(100vh-80px)] md:h-[932px] mx-auto"
+      className="bg-black rounded-3xl shadow-2xl flex flex-col w-full max-w-full md:w-[430px] md:max-w-[430px] h-[100dvh] md:h-[932px] mx-auto border-8 border-[#222] overflow-hidden"
+      style={{ minHeight: 400 }}
     >
-      <div className="flex-grow bg-white rounded-[30px] overflow-y-auto flex flex-col">
+      <div className="flex-1 flex flex-col bg-white rounded-2xl overflow-y-auto">
         {children}
       </div>
       <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
