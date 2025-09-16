@@ -3,13 +3,22 @@ import { useTranslation } from 'react-i18next';
 import { Send, Sparkles } from 'lucide-react';
 import ChatMessage from '../components/ChatMessage';
 
-function AiChatScreen() {
+function AiChatScreen({ initialMessage }) {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === 'rtl';
   
-  const [messages, setMessages] = useState([
-    { sender: 'ai', message: t('aiWelcomeMessage') }
-  ]);
+  const [messages, setMessages] = useState(() => {
+    const baseMessages = [{ sender: 'ai', message: t('aiWelcomeMessage') }];
+    
+    if (initialMessage) {
+      baseMessages.push(
+        { sender: 'user', message: initialMessage },
+        { sender: 'ai', message: t('aiAnalysisFollowUp') }
+      );
+    }
+    
+    return baseMessages;
+  });
   const [inputMessage, setInputMessage] = useState('');
 
   const suggestedPrompts = [

@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { HandCoins, Users, QrCode, FileText, CreditCard, Repeat, Wallet, PiggyBank, RotateCcw, Star } from 'lucide-react';
+import { HandCoins, Users, QrCode, FileText, CreditCard, Repeat, Wallet, PiggyBank, TrendingUp, Star } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
 
-function ServicesScreen({ onSelectService }) {
+function ServicesScreen({ onSelectService, showPremiumBadge = false }) {
   const { t } = useTranslation();
 
   const services = [
       { icon: CreditCard, label: 'myCards', id: 'myCards' }, // My Cards - Priority 1
-      { icon: RotateCcw, label: 'recurringDeduction', id: 'autoDeduction' }, // Auto Deduction - Priority 2
+      { icon: TrendingUp, label: 'smartInvestment', id: 'smartInvestment' }, // Smart Investment - Priority 2
       { icon: Wallet, label: 'dependentsWallet', id: 'dependentsWallet' }, // Dependents' Wallet - Priority 3
       { icon: HandCoins, label: 'requestPayment', id: 'requestPayment' }, // Request Payment - Priority 4
       { icon: Users, label: 'splitBill', id: 'splitBill' }, // Split Bill - Priority 5
@@ -31,6 +31,7 @@ function ServicesScreen({ onSelectService }) {
             key={index}
             icon={service.icon}
             label={service.label}
+            premium={service.id === 'smartInvestment' && showPremiumBadge}
             onClick={() => onSelectService && onSelectService(service.id)}
           />
         ))}

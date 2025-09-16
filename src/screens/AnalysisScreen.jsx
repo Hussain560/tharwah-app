@@ -8,10 +8,17 @@ import Modal from '../components/Modal';
 import HealthScore from '../components/HealthScore';
 import Price from '../components/Price';
 
-function AnalysisScreen({ isUpgraded = false }) {
+function AnalysisScreen({ isUpgraded = false, onSwitchTab }) {
   const { t, i18n } = useTranslation();
   const [selectedMonth, setSelectedMonth] = useState('september');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDiscussWithAi = () => {
+    setIsModalOpen(false);
+    if (onSwitchTab) {
+      onSwitchTab('advisor');
+    }
+  };
 
   const months = [
     { key: 'july', label: t('july') },
@@ -142,19 +149,28 @@ function AnalysisScreen({ isUpgraded = false }) {
           <div className={`bg-gray-50 rounded-lg p-4 mb-6`}>
             <p className="text-gray-800">{t('aiAnalysisText')}</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between space-x-4">
             <button
               onClick={() => setIsModalOpen(false)}
               className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
             >
               {t('close', 'Close')}
             </button>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
-            >
-              {t('getTips')}
-            </button>
+            <div className="flex space-x-2">
+              <button
+                onClick={handleDiscussWithAi}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+              >
+                <Sparkles className="h-4 w-4 mr-1" />
+                {t('discussWithAi')}
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+              >
+                {t('getTips')}
+              </button>
+            </div>
           </div>
         </div>
       </Modal>
